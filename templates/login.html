@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 40px;
+        }
+        .caja {
+            background: #a002cc;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+            display: inline-block;
+            min-width: 350px;
+        }
+        h1 {
+            font-size: 30px;
+        }
+        .error {
+            color: #ff4b4b;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #58cc02;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #46a302;
+        }
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+    <title>Armando Trivia - Login</title>
+</head>
+
+<body data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/toto.jpg') }}|{{ url_for('static', filename='imagenes/te.jpg') }}|{{ url_for('static', filename='imagenes/pura.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}|{{ url_for('static', filename='imagenes/igles.jpg') }}|{{ url_for('static', filename='imagenes/calle.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}">
+    <div class="caja">
+        <h1>Armando Trivia</h1>
+        <p>Aprende y juega sobre Colombia</p>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <p>La contraseña debe tener mínimo 6 letras o números.</p>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</html>

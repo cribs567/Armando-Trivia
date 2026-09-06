@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+</head>
+<body class="pagina-inicio" data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/toto.jpg') }}|{{ url_for('static', filename='imagenes/te.jpg') }}|{{ url_for('static', filename='imagenes/pura.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}|{{ url_for('static', filename='imagenes/igles.jpg') }}|{{ url_for('static', filename='imagenes/calle.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}">
+    <div class="tarjeta">
+        <p class="saludo">¡Hola, {{ usuario }}!</p>
+        <h1>Armando Trivia</h1>
+        <p class="subtitulo">Aprende y juega sobre Colombia</p>
+
+        <div class="reglas">
+            <span>❤️ 3 vidas</span>
+            <span>⭐ Gana puntos</span>
+            <span>⏱️ 20 segundos</span>
+        </div>
+
+        <h2>Elige una aventura</h2>
+        <div class="categorias">
+            <a href="/Geografía"><button class="boton-categoria geografia">🌎<span>Geografía</span></button></a>
+            <a href="/Historia"><button class="boton-categoria historia">📜<span>Historia</span></button></a>
+            <a href="/Cultura"><button class="boton-categoria cultura">🎭<span>Cultura</span></button></a>
+            <a href="/Naturaleza"><button class="boton-categoria naturaleza">🌿<span>Naturaleza</span></button></a>
+        </div>
+
+        <div class="acciones-inicio">
+            <a href="/Rompecabezas"><button class="boton-secundario">🎮 Rompecabezas</button></a>
+            <a href="{{ url_for('ver_Ranking') }}"><button class="boton-secundario">🏆 Ranking</button></a>
+        </div>
+
+        <a href="/logout"><button class="logout">🚪 Cerrar sesión</button></a>
+    </div>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</body>
+</html>                                                 

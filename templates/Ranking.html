@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <title>Ranking - Armando Trivia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+</head>
+
+<body data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/toto.jpg') }}|{{ url_for('static', filename='imagenes/te.jpg') }}|{{ url_for('static', filename='imagenes/pura.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}|{{ url_for('static', filename='imagenes/igles.jpg') }}|{{ url_for('static', filename='imagenes/calle.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}">
+
+    <h1>🏆 RANKING</h1>
+
+    <table class="tabla-ranking">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Estudiante</th>
+                <th>🌱 Naturaleza</th>
+                <th>📜 Historia</th>
+                <th>🎭 Cultura</th>
+                <th>🌎 Geografía</th>
+                <th>⭐ Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ jugador[0] }}</td>
+                <td>{{ jugador[1] }}</td>
+                <td>{{ jugador[2] }}</td>
+                <td>{{ jugador[3] }}</td>
+                <td>{{ jugador[4] }}</td>
+                <td><strong>{{ jugador[1] + jugador[2] + jugador[3] + jugador[4] }}</strong></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="7">Todavía no hay estudiantes registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('inicio') }}"><button>🏠 Volver al inicio</button></a>
+
+</body>
+<script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</html>

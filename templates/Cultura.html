@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <title>Cultura - Armando Trivia</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+</head>
+<body data-puntaje="{{ puntaje }}" data-amongus-src="{{ url_for('static', filename='gifs/personaje_caminando_viejo.webp') }}" data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/toto.jpg') }}|{{ url_for('static', filename='imagenes/te.jpg') }}|{{ url_for('static', filename='imagenes/pura.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}|{{ url_for('static', filename='imagenes/igles.jpg') }}|{{ url_for('static', filename='imagenes/calle.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}">
+
+    <!-- Fondo animado -->
+    <div class="fondo-animacion" id="fondo-animacion"></div>
+
+    <!-- Botón tienda -->
+    <button class="btn-tienda" onclick="abrirTienda()">🛒 Tienda</button>
+
+    <!-- Modal tienda -->
+    <div class="tienda-modal" id="tienda-modal">
+        <div class="tienda-caja">
+            <h2>🛒 Tienda de Animaciones</h2>
+            <div class="item activo" id="item-confetti">
+                <span>🎉 Confetti de fondo</span>
+                <button class="btn-comprar" onclick="comprar('confetti')">Gratis ✅</button>
+            </div>
+            <div class="item" id="item-amongus">
+                <span>👾 Among Us persiguiéndose</span>
+                <button class="btn-comprar" id="btn-amongus" onclick="comprar('amongus')">Gratis ✅</button>
+            </div>
+            <div class="item" id="item-chimpa">
+                <span>🐒 Chimpancé + rastro de 🍌</span>
+                <button class="btn-comprar" id="btn-chimpa" onclick="comprar('chimpa')">Gratis ✅</button>
+            </div>
+
+            <button class="btn-cerrar" onclick="cerrarTienda()">✖ Cerrar</button>
+        </div>
+    </div>
+
+    <div class="info" style="position:relative; z-index:10;">
+        <span class="vidas">
+            {% for i in range(vidas) %}❤️{% endfor %}
+            {% for i in range(3 - vidas) %}🖤{% endfor %}
+        </span>
+        <span class="puntaje" id="puntaje-display"> {{ puntaje }} pts</span>
+    </div>
+
+    <div class="barra">
+        <div class="progreso" id="barra-progreso" data-indice="{{ indice }}" data-total="{{ total_preguntas }}"></div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <!-- PREGUNTA Y OPCIONES -->
+<div class="pregunta-contenedor" style="position:relative; z-index:10;">
+
+    <h1 class="pregunta">
+        {{ pregunta.pregunta }}
+    </h1>
+
+    <form method="POST" id="quiz-form">
+
+        <div id="opciones">
+
+            {% for opcion in pregunta.opcion %}
+
+                <button
+                    type="button"
+                    onclick="verificar('{{ opcion }}', '{{ pregunta.respuesta }}', this)">
+                    {{ opcion }}
+                </button>
+
+            {% endfor %}
+    </form>
+
+
+</div>
+        {% if mensaje %}
+    <div class="mensaje">
+        {{ mensaje }}
+    </div>
+{% endif %}
+
+    </form>
+    </div>
+
+    <div class="resultado-caja correcto-caja" id="caja-correcto"> ¡Correcto! ¡Eres increíble!</div>
+    <div class="resultado-caja incorrecto-caja" id="caja-incorrecto">
+         ¡Incorrecto! La respuesta era: <span id="respuesta-correcta"></span>
+    </div>
+
+    <form method="POST" id="form-respuesta" style="position:relative; z-index:10;">
+        <input type="hidden" name="respuesta" id="input-respuesta">
+        <button type="submit" class="btn-siguiente" id="btn-siguiente">Siguiente ➡️</button>
+    </form>
+
+    <div>
+    <div class="temporizador" id="temporizador">Tiempo: 20 s</div>
+    <a href="{{ url_for('inicio') }}" class="btn-inicio">🏠 Volver al inicio</a>
+        <button class="btn-siguiente" id="btn-siguiente" style="display:none;">Siguiente ➡️</button>
+    </div>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+
+</body>
+</html>
+

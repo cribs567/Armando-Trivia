@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <meta charset="UTF-8">
+    <title>Resultado Final</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+</head>
+<body data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/toto.jpg') }}|{{ url_for('static', filename='imagenes/te.jpg') }}|{{ url_for('static', filename='imagenes/pura.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}|{{ url_for('static', filename='imagenes/igles.jpg') }}|{{ url_for('static', filename='imagenes/calle.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}">
+    <div class="caja"> 
+        {% if razon == "completo" %}
+            <h1 class="verde">🎉 ¡Lección completada!</h1>
+        {% else %}
+           <h1>🏆 RESULTADO FINAL</h1>
+        <h2 class="rojo">💔 ¡Se acabaron las vidas!</h2>
+        {% endif %}
+
+        <div class="puntaje-grande">{{ puntaje }} pts</div>
+    </div>
+
+    <p>❤️ Vidas restantes: {{ vidas }}</p>
+        </table>
+        <p>¡Gracias por jugar! Esperamos que hayas disfrutado aprendiendo sobre la cultura colombiana.</p>
+        <p>Si quiere volver a jugar este juego puede darle al boton de Intentar de nuevo</p>
+        <a href="{{ url_for('intentar_de_nuevo') }}"><button>🔄 Intentar de nuevo</button></a>
+         <a href="/logout"><button class="btn-rojo">🚪 Salir</button></a>
+</body>
+<script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</html>
