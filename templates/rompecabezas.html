@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+    <title>Rompecabezas - Armando Trivia</title>
+</head>
+<body class="pagina-inicio" data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}">
+    <main class="tarjeta juegos-tarjeta">
+        <h1>🧩 Rompecabezas deslizante</h1>
+        <p class="subtitulo">Elige una imagen y ordena las piezas usando el espacio vacío.</p>
+        <div class="rompecabezas-controles">
+            <label for="seleccionar-rompecabezas">Imagen:</label>
+            <select id="seleccionar-rompecabezas">
+                <option value="calle">Calle</option>
+                <option value="wuste">Wuste</option>
+                <option value="sombrero">Sombrero</option>
+            </select>
+        </div>
+        <div class="rompecabezas-layout">
+            <aside class="guia-rompecabezas">
+                <span>Guía</span>
+                <img id="imagen-guia" alt="Imagen completa del rompecabezas">
+            </aside>
+            <section>
+                <div class="reglas"><span>🎯 Movimientos: <strong id="turns">0</strong></span><span>🏆 Completa la imagen</span></div>
+                <div id="board"></div>
+            </section>
+        </div>
+        <button type="button" id="mezclar">🔀 Mezclar</button>
+        <a href="{{ url_for('juegos') }}" class="btn-inicio">🎮 Volver a juegos</a>
+    </main>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+    <title>Sopa de letras - Armando Trivia</title>
+</head>
+<body class="pagina-inicio" data-fondos="{{ url_for('static', filename='imagenes/ave.jpg') }}|{{ url_for('static', filename='imagenes/nes.jpg') }}">
+    <main class="tarjeta juegos-tarjeta">
+        <h1>🔎 Sopa de letras</h1>
+        <p class="subtitulo">Encuentra las palabras colombianas escondidas.</p>
+        <div class="reglas">
+            <span>🔍 Toca inicio y final</span>
+            <span>⭐ Encontradas: <strong id="palabras-encontradas">0</strong>/8</span>
+        </div>
+        <div class="sopa-layout">
+            <div id="sopa-tablero" aria-label="Sopa de letras"></div>
+            <aside class="lista-sopa">
+                <h2>Palabras</h2>
+                <ul id="palabras-sopa"></ul>
+            </aside>
+        </div>
+        <button type="button" id="reiniciar-sopa">🔄 Reiniciar</button>
+        <a href="{{ url_for('juegos') }}" class="btn-inicio">🎮 Volver a juegos</a>
+    </main>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</body>
+</html>

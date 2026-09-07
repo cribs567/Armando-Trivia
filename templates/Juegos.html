@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+    <title>Juegos - Armando Trivia</title>
+</head>
+<body class="pagina-inicio" data-fondos="{{ url_for('static', filename='imagenes/variado.jpg') }}|{{ url_for('static', filename='imagenes/cartagena.jpg') }}|{{ url_for('static', filename='imagenes/Medellin, Colombia.jpg') }}|{{ url_for('static', filename='imagenes/bandera.jpg') }}">
+    <main class="tarjeta juegos-tarjeta">
+        <h1>🎮 Zona de juegos</h1>
+        <p class="subtitulo">Elige una actividad para divertirte y aprender</p>
+
+        <div class="categorias juegos-categorias">
+            <a href="{{ url_for('rompecabezas') }}">
+                <button class="boton-categoria">🧩<span>Rompecabezas deslizante</span></button>
+            </a>
+            <a href="{{ url_for('crucigrama') }}">
+                <button class="boton-categoria">✏️<span>Crucigrama</span></button>
+            </a>
+            <a href="{{ url_for('sopa_de_letras') }}">
+                <button class="boton-categoria">🔎<span>Sopa de letras</span></button>
+            </a>
+        </div>
+
+        <a href="{{ url_for('inicio') }}" class="btn-inicio">🏠 Volver al inicio</a>
+    </main>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</body>
+</html>

@@ -2,15 +2,12 @@ import random
 import re
 from flask import Flask, render_template, request, session, redirect, url_for
 from preguntas import Geografía, Cultura, Historia, Naturaleza
-from bd import crear_bd, guardar, obtener_ranking_completo
-usuarios_activos = set()
-
+from bd import crear_bd, crear_usuario, guardar, obtener_ranking_completo, verificar_usuario
 app = Flask(__name__)
 app.secret_key = "clave_secreta"
 
 crear_bd()   # Crea la base de datos si no existe
 usuarios_activos = set()
-contrasenas_activas = set()
 
 def asegurar_ordenes():
     if "ordenes" not in session:
@@ -39,15 +36,18 @@ def login():
         elif not re.fullmatch(r"[A-Za-z0-9]+", contrasena):
             error = "La contraseña solo puede contener letras y números."
 
-        elif usuario in usuarios_activos:
-            error = "Ese usuario ya está en uso."
-
-        elif contrasena in contrasenas_activas:
-            error = "Esa contraseña ya está siendo utilizada."
-
         else:
+            usuario_existente = verificar_usuario(usuario, contrasena)
+
+            if usuario_existente is False:
+                error = "La contraseña no es correcta."
+            elif usuario_existente is None:
+                crear_usuario(usuario, contrasena)
+
+            if error:
+                return render_template("login.html", error=error)
+
             usuarios_activos.add(usuario)
-            contrasenas_activas.add(contrasena)
 
             session["usuario"] = usuario
             session["indice"] = 0
@@ -64,6 +64,30 @@ def inicio():
     if "usuario" not in session:
         return redirect(url_for("login"))
     return render_template("inicio.html", usuario=session.get("usuario"))
+
+@app.route("/Juegos")
+def juegos():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+    return render_template("Juegos.html")
+
+@app.route("/Rompecabezas")
+def rompecabezas():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+    return render_template("rompecabezas.html")
+
+@app.route("/Crucigrama")
+def crucigrama():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+    return render_template("crucigrama.html")
+
+@app.route("/Sopa-de-letras")
+def sopa_de_letras():
+    if "usuario" not in session:
+        return redirect(url_for("login"))
+    return render_template("sopa.html")
 
 @app.route("/Geografía", methods=["GET", "POST"])
 def geografia_preguntas():

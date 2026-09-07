@@ -109,6 +109,202 @@ font-size: 22px;
     font-weight: bold;
 }
 
+.juegos-categorias {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.juegos-tarjeta {
+    max-width: 980px;
+}
+
+.sopa-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin: 20px auto;
+}
+
+#sopa-tablero {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: min(560px, 78vw);
+    aspect-ratio: 1;
+    padding: 5px;
+    background: #0e1538;
+    border: 3px solid #00ccff;
+    border-radius: 10px;
+}
+
+.letra-sopa {
+    display: grid;
+    place-items: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    min-width: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: clamp(14px, 2.4vw, 24px);
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.letra-sopa.seleccionada {
+    background: #00ccff;
+    color: #0e1538;
+}
+
+.letra-sopa.encontrada {
+    background: #58cc02;
+    color: #ffffff;
+}
+
+.lista-sopa {
+    min-width: 170px;
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #d400d4;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.lista-sopa h2 {
+    margin-top: 0;
+    color: #00ccff;
+}
+
+.lista-sopa ul {
+    padding-left: 22px;
+    margin-bottom: 0;
+}
+
+.lista-sopa li {
+    margin: 8px 0;
+    font-weight: bold;
+}
+
+.lista-sopa li.encontrada {
+    color: #58cc02;
+    text-decoration: line-through;
+}
+
+.crucigrama-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    margin: 20px auto;
+}
+
+#crucigrama-tablero {
+    --tamano-crucigrama: 13;
+    display: grid;
+    grid-template-columns: repeat(var(--tamano-crucigrama), 1fr);
+    width: min(520px, 78vw);
+    aspect-ratio: 1;
+    padding: 4px;
+    background: #0e1538;
+    border: 3px solid #00ccff;
+    border-radius: 8px;
+}
+
+.casilla-crucigrama,
+.bloque-crucigrama {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid #0e1538;
+}
+
+.casilla-crucigrama {
+    position: relative;
+    background: #ffffff;
+}
+
+.numero-crucigrama {
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    color: #0e1538;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bloque-crucigrama {
+    background: #0e1538;
+}
+
+.casilla-crucigrama input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: #0e1538;
+    text-align: center;
+    font-family: inherit;
+    font-size: clamp(14px, 2.5vw, 25px);
+    font-weight: bold;
+}
+
+.casilla-crucigrama input:focus {
+    background: #8be9fd;
+}
+
+.casilla-crucigrama input.correcta {
+    background: #b9f6a5;
+}
+
+.pistas-crucigrama {
+    width: min(280px, 30vw);
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #d400d4;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.pistas-crucigrama h2 {
+    margin-top: 0;
+    color: #00ccff;
+}
+
+.pistas-crucigrama h3 {
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.pistas-crucigrama ol {
+    padding-left: 28px;
+    margin-top: 4px;
+}
+
+.pistas-crucigrama li {
+    margin: 7px 0;
+    font-size: 15px;
+}
+
+.acciones-crucigrama {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.acciones-crucigrama button {
+    width: auto;
+    min-width: 150px;
+}
+
 .geografia, .historia, .cultura, .naturaleza { background: #a002cc; }
 
 .acciones-inicio {
@@ -191,6 +387,7 @@ font-size: 22px;
 
     .tarjeta { padding: 22px 14px; }
     .categorias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .juegos-categorias { grid-template-columns: 1fr; }
     button { width: calc(100% - 20px); }
     #opciones {
         display: flex;
@@ -491,6 +688,157 @@ width: 80%;
         z-index: 2;
         pointer-events: none;
         }
+
+.rompecabezas-controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 18px auto;
+    font-weight: bold;
+}
+
+.rompecabezas-controles select {
+    padding: 10px 14px;
+    border: 2px solid #00ccff;
+    border-radius: 6px;
+    background: #0e1538;
+    color: #ffffff;
+    font: inherit;
+}
+
+.rompecabezas-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    margin: 20px auto;
+}
+
+.guia-rompecabezas {
+    width: 150px;
+    flex: 0 0 150px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid #00ccff;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.guia-rompecabezas img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-top: 6px;
+}
+
+#board {
+    --filas-rompecabezas: 3;
+    width: min(440px, 80vw);
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--filas-rompecabezas), 1fr);
+    margin: 0 auto;
+    border: 8px solid #00ccff;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0e1538;
+}
+
+.pieza-rompecabezas {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid #0e1538;
+    background-size: var(--filas-rompecabezas) var(--filas-rompecabezas);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.pieza-rompecabezas img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pieza-rompecabezas.vacia {
+    visibility: hidden;
+    cursor: default;
+}
+
+@media (max-width: 700px) {
+    .rompecabezas-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .guia-rompecabezas {
+        width: 130px;
+        flex-basis: auto;
+        order: 0;
+    }
+
+    .rompecabezas-layout section {
+        width: 100%;
+    }
+
+    #board {
+        width: min(390px, 88vw);
+    }
+
+    .sopa-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sopa-tablero {
+        width: min(390px, 88vw);
+    }
+
+    .lista-sopa {
+        width: min(300px, 82vw);
+        box-sizing: border-box;
+    }
+
+    .crucigrama-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #crucigrama-tablero {
+        width: min(390px, 88vw);
+    }
+
+    .pistas-crucigrama {
+        width: min(330px, 84vw);
+        box-sizing: border-box;
+    }
+}
+
+.sopa-layout #sopa-tablero button.letra-sopa,
+.sopa-layout #sopa-tablero button.letra-sopa:hover {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    transform: none;
+    filter: none;
+}
+
+.sopa-layout #sopa-tablero button.letra-sopa.seleccionada {
+    background: #00ccff;
+}
+
+.sopa-layout #sopa-tablero button.letra-sopa.encontrada {
+    background: #58cc02;
+}
 
 /* Ajustes finales para pantallas pequenas */
 @media (max-width: 700px) {

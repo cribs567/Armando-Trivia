@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo/pieza.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='luck.css') }}">
+    <title>Crucigrama - Armando Trivia</title>
+</head>
+<body class="pagina-inicio" data-fondos="{{ url_for('static', filename='imagenes/bandera.jpg') }}|{{ url_for('static', filename='imagenes/iglesia.jpg') }}">
+    <main class="tarjeta juegos-tarjeta">
+        <h1>✏️ Crucigrama</h1>
+        <p class="subtitulo">Completa las palabras con estas pistas sobre Colombia.</p>
+        <div class="reglas"><span>🧠 Piensa</span><span>✅ Aciertos: <strong id="aciertos-crucigrama">0</strong>/8</span></div>
+        <div class="crucigrama-layout">
+            <div id="crucigrama-tablero" aria-label="Crucigrama"></div>
+            <section class="pistas-crucigrama">
+                <h2>Pistas</h2>
+                <h3>Horizontales</h3>
+                <ol id="pistas-horizontales"></ol>
+                <h3>Verticales</h3>
+                <ol id="pistas-verticales"></ol>
+            </section>
+        </div>
+        <div class="acciones-crucigrama">
+            <button type="button" id="comprobar-crucigrama">✅ Comprobar</button>
+            <button type="button" id="reiniciar-crucigrama">🔄 Reiniciar</button>
+        </div>
+        <a href="{{ url_for('juegos') }}" class="btn-inicio">🎮 Volver a juegos</a>
+    </main>
+    <script src="{{ url_for('static', filename='trivia.js') }}"></script>
+</body>
+</html>

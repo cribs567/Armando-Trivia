@@ -1,4 +1,5 @@
 import sqlite3
+from werkzeug.security import check_password_hash, generate_password_hash
 
 DB = "ranking.db"
 
@@ -23,8 +24,40 @@ def crear_bd():
     )
     """)
 
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS usuarios(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL UNIQUE,
+        contrasena TEXT NOT NULL
+    )
+    """)
+
     con.commit()
     con.close()
+
+
+def crear_usuario(nombre, contrasena):
+    con = conectar()
+    cur = con.cursor()
+    cur.execute(
+        "INSERT INTO usuarios(nombre, contrasena) VALUES(?, ?)",
+        (nombre, generate_password_hash(contrasena))
+    )
+    con.commit()
+    con.close()
+
+
+def verificar_usuario(nombre, contrasena):
+    con = conectar()
+    cur = con.cursor()
+    cur.execute("SELECT contrasena FROM usuarios WHERE nombre = ?", (nombre,))
+    usuario = cur.fetchone()
+    con.close()
+
+    if usuario is None:
+        return None
+
+    return check_password_hash(usuario[0], contrasena)
 
 
 def guardar(nombre, categoria, puntaje):
